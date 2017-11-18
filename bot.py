@@ -10,19 +10,19 @@ from threading import Thread
 
 
 cl = LINETCR.LINE()
-cl.login(token="Em91waQIcvXWyMrE8SMc.jB1lTE0oNuMV5aYqlcvM7a.7P/be3MufcdYxm9DNnjlwb3iznUwTax6a/EdRmIq8Gk=")
+cl.login(qr=True)
 cl.loginResult()
 
 kk = LINETCR.LINE()
-kk.login(token="EmFfB9MKm6K5cWzaHTud.ljW+dg/qfx/S+nua8chOdq.qb6cEnwV35DvutN/DBZFiz+oGHA8o3yTxPkGcdgOYyM=")
+kk.login(qr=True)
 kk.loginResult()
 
 ki = LINETCR.LINE()
-ki.login(token="EmpYFvEcoVYxm0yKgG3c.kPCIxd3dx0LAHGGMosEvBa.+cl/ASX02L2uR1rO8hILexKyxAPgjhBcSHz941O8JJ4=")
+ki.login(qr=True)
 ki.loginResult()
 
 kc = LINETCR.LINE()
-kc.login(token="EmLO74bVtkpmo1RO0Ln9.lx6iYJ1ZQ3OTRUu4MoLSQq.U4ciUWB81tnXCWlUSNSzv3aQbAi43FIgP/uiXZVNUHk=")
+kc.login(qr=True)
 kc.loginResult()
 
 print "=====Login Berhasil====="
@@ -467,19 +467,6 @@ def bot(op):
                         pass
                     elif wait["cancelprotect"] == True:
                         cl.cancelGroupInvitation(op.param1,[contact.mid for contact in cl.getGroup(op.param1).invitee])
-
-        if op.type == 11:
-            if op.param2 not in Bots:
-                if op.param2 in Bots:
-                    pass
-            elif wait["linkprotect"] == True:
-                G = cl.getGroup(op.param1)
-                G.preventJoinByTicket = True
-                cl.updateGroup(G)
-#                random.choice(KAC).kickoutFromGroup(op.param1,[op.param2])
-            else:
-                cl.sendText(op.param1,"")
-
         if op.type == 22:
             if wait["leaveRoom"] == True:
                 cl.leaveRoom(op.param1)

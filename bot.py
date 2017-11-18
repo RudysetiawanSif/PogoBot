@@ -183,6 +183,20 @@ def bot(op):
                     wait2['ROM'][op.param1][op.param2] = '☞ ' + Name
             else:
                 pass
+        if op.type == 11:
+            if op.param2 not in Bots:
+                if op.param2 in Bots:
+                    pass
+                elif wait["linkprotect"] == True:
+                    wait ["blacklist"][op.param2] = True
+                    G = kc.getGroup(op.param1)
+                    G.preventJoinByTicket = True
+                    kc.updateGroup(G)
+                    random.choice(KAC).kickoutFromGroup(op.param1,[op.param2])
+                else:
+                    cl.sendText(op.param1,"")
+            else:
+                cl.sendText(op.param1,"")
 
         if op.type == 13:
                 if op.param3 in dmid:
@@ -467,19 +481,7 @@ def bot(op):
                         pass
                     elif wait["cancelprotect"] == True:
                         cl.cancelGroupInvitation(op.param1,[contact.mid for contact in cl.getGroup(op.param1).invitee])
-
-        if op.type == 11:
-            if op.param2 not in Bots:
-                if op.param2 in Bots:
-                    pass
-            elif wait["linkprotect"] == True:
-                G = cl.getGroup(op.param1)
-                G.preventJoinByTicket = True
-                cl.updateGroup(G)
-#                random.choice(KAC).kickoutFromGroup(op.param1,[op.param2])
-            else:
-                cl.sendText(op.param1,"")
-
+                        
         if op.type == 22:
             if wait["leaveRoom"] == True:
                 cl.leaveRoom(op.param1)
